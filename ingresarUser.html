@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <section id="section_user" class="flex_vertical">
+        <h2>Ingresar usuario</h2>
+        <label for="name">Ingresar nombre del usuario</label>
+        <br>
+        <input type="text" id="name" class="input_text">
+        <p class="errorMsj hide">Ingresar un nombre válido*</p>
+        <br>
+        <label for="email">Ingresar email del usuario</label>
+        <p class="errorMsj hide">Ingresar un email válido*</p>
+        <br>
+        <input type="email" name="email" id="email" class="input_text">
+        <br>
+        <label for="rol">Seleccionar rol del usuario</label>
+        <p class="errorMsj hide">Selecciona el rol del usuario*</p>
+        <br>
+        <select name="rol" id="rol" class="input_option">
+            <option value="no-rol">Seleccionar rol</option>
+            <option value="admin">Admin</option>
+            <option value="pm">PM</option>
+            <option value="director">Director</option>
+            <option value="finanzas">Finanzas</option>
+        </select>
+        <br>
+        <label for="rol">Seleccionar los clientes del PM</label>
+        <br>
+        <select name="clients" id="clients_i" class="input_option" multiple="multiple">
+            <option value="no-client">Seleccionar clientes</option>
+        </select>
+        <br>
+        <input type="button" value="REGISTRAR" id="sendUser"  class="sendButton">
+    </section>
+    <div class="panel" id="aviso" data-on="off" onclick="this.setAttribute('data-on','off')">
+        <div>
+        <p id="aviso_msj"></p>
+        </div>
+    </div>
+    <input type="button" value="Obtener usuarios" id="getUsers">    
+    <p id="resultado"></p>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="ingresarUser.js"></script>
+</body>
+</html>
