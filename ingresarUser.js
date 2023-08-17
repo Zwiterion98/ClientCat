@@ -66,7 +66,7 @@ const handleUser = async () => {
 }
 
 const getUsers = async  () =>{ 
-    let users = await obtenerUsusarios();
+    let users = await obtenerUsuarios();
     let html = "";
     for(let i = 0; i < Object.keys(users).lenght; i++){ // no puedo obtener el largo
         html+= `

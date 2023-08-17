@@ -54,11 +54,24 @@ const createClient = async (_name) => {
 };
 
 
-const obtenerUsusarios = async () => {
+const obtenerUsuarios = async () => {
     try{
         const {data,error} = await _supabase.from('USERS') 
         .select('*')
         .eq('rol', 'pm')
+        console.log(data);
+        return data;
+    }
+    catch(e){
+        console.log(e);
+    }
+}
+
+const obtenerUsuariosPorNombre = async (name) => {
+    try{
+        const {data,error} = await _supabase.from('USERS') 
+        .select('*')
+        .eq('name', name)
         console.log(data);
         return data;
     }
@@ -94,8 +107,6 @@ const obtenerClientesPorNombre = async (_name) => {
         console.log(e);
     }
 }
-
-
 
 //Buscar user por id
 

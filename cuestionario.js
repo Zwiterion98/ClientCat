@@ -316,7 +316,7 @@ pm_i.addEventListener("change", () => {
 });
 
 const setPM = async () => {
-    PM_list = await obtenerUsusarios();
+    PM_list = await obtenerUsuarios();
     console.log(PM_list.length);
     for(let i = 0; i < PM_list.length; i++){
         pm_i.innerHTML+= `<option value="${i}">${PM_list[i].name}</option>`;

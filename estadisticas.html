@@ -9,11 +9,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div>
-        <h2>Lista de Nombres Analizados</h2>
-        <ul id="listaNombresAnalizados">
+        <h2>Seleccionar usuario</h2>
+        <select name="ususarios" id="i_usuarios" class="input_option">
+            <option value="todos">Todos</option>
+        </select>
+    </div>
+    <div>
+        <h2>Clientes</h2>
+        <label for="listaNombresAnalizados" class="label" id="conCuestionario">Completos</label>
+        <ul id="listaNombresAnalizados" class="label">
             <!-- Los nombres se agregarán aquí dinámicamente -->
+        </ul>
+        <label for="listaNombresSinAnalizar" class="label" id="sinCuestionario">Incompletos</label>
+        <ul id="listaNombresSinAnalizar" class="label"> 
+            
         </ul>
     </div>
     <div id="inversionStats"></div>
