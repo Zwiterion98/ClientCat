@@ -173,6 +173,7 @@ const estadistica = async () => {
                 }
             }
         });
+        
         listaNombresAnalizados.appendChild(listItem);
     });
      
