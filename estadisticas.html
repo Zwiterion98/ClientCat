@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas de Cuestionarios</title>
+    <!-- Incluir las bibliotecas de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <h2>Seleccionar usuario</h2>
+        <select name="ususarios" id="i_usuarios" class="input_option">
+            <option value="todos">Todos</option>
+        </select>
+    </div>
+    <div>
+        <h2>Clientes</h2>
+        <label for="listaNombresAnalizados" class="label" id="conCuestionario">Completos</label>
+        <ul id="listaNombresAnalizados" class="label">
+            <!-- Los nombres se agregarán aquí dinámicamente -->
+        </ul>
+        <label for="listaNombresSinAnalizar" class="label" id="sinCuestionario">Incompletos</label>
+        <ul id="listaNombresSinAnalizar" class="label"> 
+            
+        </ul>
+    </div>
+    <div id="inversionStats"></div>
+    <div id="graficosContainer">
+        <!-- Los gráficos de barras se agregarán aquí dinámicamente -->
+    </div>
+    <div>
+        <!-- Agregar un elemento canvas para el gráfico de pastel -->
+        <canvas id="graficoPastel"></canvas>
+    </div>
+    <div id="tablesContainer">
+        <!-- Las tablas se agregarán aquí dinámicamente -->
+    </div>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="estadisticas.js"></script>
+</body>
+</html>

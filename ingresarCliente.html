@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <section id="cliente_section" class="flex_vertical">
+        <h2>Ingresar clientes</h2>
+        <label for="clientName">Nombre del cliente</label>
+        <br>
+        <input type="text" name="nameClient" id="nameClient" class="input_text">
+        <p class="errorMsj hide">Ingresar un nombre válido*</p>
+        <br>
+        <input type="button" value="INGRESAR" id="sendClient" class="sendButton">
+    </section>
+    <div class="panel" id="aviso" data-on="off" onclick="this.setAttribute('data-on','off')">
+        <div>
+        <p id="aviso_msj"></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="ingresarCliente.js"></script>
+</body>
+</html>

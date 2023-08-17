@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <section id="seleccion_persona">
+        <h2>Registar cuestionario</h2>
+        <h3>Seleccionar PM</h3>
+        <select name="pm_i" id="pm_i" class="input_option">
+            <option value="">Seleccionar</option>
+        </select>
+        <h3>Seleccionar Cliente</h3>
+        <select name="cliente_i" id="cliente_i" class="input_option">
+            <option value="">Seleccionar</option>
+        </select>
+        <br>
+    </section>
+    <section id="section_cuestionario" class="">
+        <h2>Definicion del cliente</h2>
+        <br>
+        <h3>Tiempo</h3>
+        <p>El tiempo es una de las variables que tomaremos en cuenta ya que nos da un relevamiento de datos del tiempo que el equipo le asigna a dichos clientes. </p>
+        <div id="reuniones_div">
+            <h4>Reuniones</h4>
+            <select name="reuniones_i" id="reuniones_i" class="input_option" >
+                <option value="">Selecciona un tiempo</option>
+                <option value="mensual">Mensual</option>
+                <option value="quincenal">Quincenal</option>
+                <option value="semanal">Semanal</option>
+            </select>
+        </div>
+        <div id="propuestas_div">
+            <h4>Propuestas</h4>
+            <select name="propuestas_i" id="propuestas_i" class="input_option">
+                <option value="">Selecciona un tiempo</option>
+                <option value="mensual">Mensual</option>
+                <option value="quincenal">Quincenal</option>
+                <option value="semanal">Semanal</option>
+            </select>
+        </div>
+        <div id="mail_div">
+            <h4>Mail</h4>
+            <select name="mail_i" id="mail_i" class="input_option">
+                <option value="">Selecciona un tiempo</option>
+                <option value="quincenal">Quincenal</option>
+                <option value="semanal">Semanal</option>
+                <option value="diario">Diario</option>
+            </select>
+        </div>
+        <div id="tareas_div">
+            <h4>Tareas</h4>
+            <select name="tareas_i" id="tareas_i" class="input_option">
+                <option value="">Selecciona un tiempo</option>
+                <option value="quincenal">Quincenal</option>
+                <option value="semanal">Semanal</option>
+                <option value="diario">Diario</option>
+            </select>
+        </div>
+        <br>
+        <h3>Inversion</h3>
+        <p>El ticket promedio de los clientes es una unidad de medida para establecer si estamos frente a un cliente A, B o C. Mediremos las distintas variables tomando como punto de partida este ticket promedio.  </p>
+        <label for="inversion_i">Ingrese ticket promedio del cliente</label>
+        <input type="number" name="inversion_i" id="inversion_i" class="input_text">
+        <br>
+        <h3>Cliente aspiracional</h3>
+        <p>El cliente aspiracional es aquel que cumple con determinados requisitos con base en lo que sería el ideal de la compañía.</p>
+        <Label>Periodo de contrato de 6 meses a 1 año</Label>
+        <br>
+        <input type="radio" name="contrato_si" id="contrato_si"><label for="contrato_si">SI</label>
+        <input type="radio" name="contrato_no" id="contrato_no"><label for="contrato_no">NO</label>
+        <br>
+        <Label>Presupuesto y apertura para creatividad</Label>
+        <br>
+        <input type="radio" name="presupuesto_si" id="presupuesto_si"><label for="presupuesto_si">SI</label>
+        <input type="radio" name="presupuesto_no" id="presupuesto_no"><label for="presupuesto_no">NO</label>
+        <br>
+        <Label>Presencia internacional o posicionamiento</Label>
+        <br>
+        <input type="radio" name="presencia_si" id="presencia_si"><label for="presencia_si">SI</label>
+        <input type="radio" name="presencia_no" id="presencia_no"><label for="presencia_no">NO</label>
+        <br>
+        <div id="tareas_div">
+            <label>Pago en fecha</label for="pago_i">
+            <select name="pago_i" id="pago_i" class="input_option">
+                <option value="">Selecciona un tiempo</option>
+                <option value="0a2">de 0 a 2 meses</option>
+                <option value="2a4">de 2 a 4 meses</option>
+                <option value="+5">+ de 5 meses</option>
+            </select>
+        </div>
+        <br>
+        <h3>Cliente ideal</h3>
+        <p>El cliente ideal es aquel que cumple con los requerimientos para una buena sinergia entre cliente - agencia. Este tipo de clientes facilita la estrategia para llegar más rápido a los objetivos. Además permite un buen trabajo en conjunto.  </p>
+        <Label>Predisposición a trabajar en equipo</Label>
+        <br>
+        <input type="radio" name="predisposicion_si" id="predisposicion_si"><label for="predisposicion_si">SI</label>
+        <input type="radio" name="predisposicion_no" id="predisposicion_no"><label for="predisposicion_no">NO</label>
+        <br>
+        <Label>Organizacion y comunicacion interna del cliente</Label>
+        <br>
+        <input type="radio" name="organizacion_si" id="organizacion_si"><label for="organizacion_si">SI</label>
+        <input type="radio" name="organizacion_no" id="organizacion_no"><label for="organizacion_no">NO</label>
+        <br>
+        <Label>Conocimientos del cliente en marketing</Label>
+        <br>
+        <input type="radio" name="conocimiento_si" id="conocimiento_si"><label for="conocimiento_si">SI</label>
+        <input type="radio" name="conocimiento_no" id="conocimiento_no"><label for="conocimiento_no">NO</label>
+        <br>
+        <Label>Pedidos con una antelación de 48 hs</Label>
+        <br>
+        <input type="radio" name="pedido_si" id="pedido_si"><label for="pedido_si">SI</label>
+        <input type="radio" name="pedido_no" id="pedido_no"><label for="pedido_no">NO</label>
+        <br>
+        <Label>Menos de 3 urgencias y/o cambios de estrategia por mes</Label>
+        <br>
+        <input type="radio" name="urgencia_si" id="urgencia_si"><label for="urgencia_si">SI</label>
+        <input type="radio" name="urgencia_no" id="urgencia_no"><label for="urgencia_no">NO</label>
+        <br>
+        <Label>Contacto por líneas formales (que sea por reunión o por mail)</Label>
+        <br>
+        <input type="radio" name="contacto_si" id="contacto_si"><label for="contacto_si">SI</label>
+        <input type="radio" name="contacto_no" id="contacto_no"><label for="contacto_no">NO</label>
+        <br>
+        <div id="cambios_div">
+            <label>Cambios en diseño</label for="cambios_i">
+            <select name="cambios_i" id="cambios_i" class="input_option">
+                <option value="">Selecciona un tiempo</option>
+                <option value="0a2">de 0 a 2 cambios</option>
+                <option value="2a4">de 2 a 5 cambios</option>
+                <option value="+5">+ de 5 cambios</option>
+            </select>
+        </div>
+        <br>
+        <input type="button" value="ENVIAR" id="submit_cuestion" class="sendButton">
+    </section>
+  
+    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="cuestionario.js"></script>
+</body>
+</html>
