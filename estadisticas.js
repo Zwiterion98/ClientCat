@@ -27,7 +27,6 @@ function calcularEstadisticasCuestionarios(listaObjetos) {
     };
     clientesSinCuestionario = [];
     clientesConCuestionario = [];
-    clientesConCuestionario = [];
     for (const objeto of listaObjetos) {
         console.log(objeto.cuestionary.length)
         if (objeto.cuestionary && objeto.cuestionary.length > 0) {
@@ -106,7 +105,7 @@ function calcularEstadisticasInversionPorTipo(estadisticas, listaObjetos) {
 const estadistica = async () => {
     let listaObjetos = await obtenerClientes();
     let listaObjetosFinal = [];
-    let _user;
+    let _users;
     console.log(currentPM)
     if(currentPM == "" ||  currentPM == "todos"){
         listaObjetosFinal = listaObjetos; 
@@ -117,8 +116,8 @@ const estadistica = async () => {
         keys.forEach(client => {
             listaObjetos.forEach(_client =>{
                 if(_client.name == client){
-                   console.log( _client)
-                listaObjetosFinal.push(_client)
+                    console.log( _client)
+                    listaObjetosFinal.push(_client)
                 }
             })
         })
@@ -175,8 +174,15 @@ const estadistica = async () => {
         });
         listaNombresAnalizados.appendChild(listItem);
     });
-     
-    if(listaNombresAnalizados.length > 0){
+    console.log(listaNombresAnalizados.childNodes.length)
+    const clientA = document.getElementById("clientA");
+    const clientB = document.getElementById("clientB");
+    const clientC = document.getElementById("clientC");
+
+    clientC.innerHTML = '';
+    clientB.innerHTML = '';
+    clientA.innerHTML = '';
+    if(listaNombresAnalizados.childNodes.length > 0){
          // Crear un gráfico de barras para cada valor de respuesta
          for (const respuesta in estadisticas) {
             if (respuesta !== 'analizados' && respuesta !== 'nombresAnalizados' && respuesta !== 'tipos') {
@@ -209,7 +215,48 @@ const estadistica = async () => {
                 });
             }
         }
+        // Mostrar tabla tipo de clientes
 
+        
+        let clientesConCuestionarioFinal = [];
+        console.log(currentPM)
+        if(currentPM == "" ||  currentPM == "todos"){
+            clientesConCuestionarioFinal = clientesConCuestionario; 
+        }
+        else{
+            _users = await obtenerUsuariosPorNombre(currentPM);
+            let keys = Object.keys(_users[0].clients);
+            console.log(keys)
+            keys.forEach(client => {
+                clientesConCuestionario.forEach(_client =>{
+                    if(_client.name == client){
+                        console.log( _client)
+                        clientesConCuestionarioFinal.push(_client)
+                    }
+                })
+            })
+        }
+        
+        clientesConCuestionarioFinal.forEach( client => {
+        if(client.type == "C"){
+            console.log("C")
+            const listItem = document.createElement('li');
+            listItem.textContent = client.name;
+            clientC.appendChild(listItem);
+        }
+        else if (client.type == "B"){
+            console.log("B")
+            const listItem = document.createElement('li');
+            listItem.textContent = client.name;
+            clientB.appendChild(listItem);
+        }
+        else if (client.type == "A"){
+            console.log("A")
+            const listItem = document.createElement('li');
+            listItem.textContent = client.name;
+            clientA.appendChild(listItem);
+        }
+        });
         // Mostrar estadísticas de inversión
         const inversionStats = document.getElementById('inversionStats');
         inversionStats.innerHTML = `
@@ -262,7 +309,11 @@ setPM();
 
 let currentPM = "";
 i_usuarios.addEventListener("click", ()=>{
-currentPM = i_usuarios.value;
-estadistica();
+
+    if(currentPM != i_usuarios.value){
+        currentPM = i_usuarios.value;
+        estadistica();
+    }
+
 });
 
