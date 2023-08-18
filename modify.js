@@ -145,8 +145,27 @@ modificar_i.addEventListener("change", () =>{
         document.getElementById("seleccion_cliente").classList.add("hide");
     }
     else if(modificar_i.value == "cliente"){
+        setClients();
         document.getElementById("seleccion_persona").classList.add("hide")
         document.getElementById("seleccion_cliente").classList.remove("hide")
     }
 });
 
+/////////////////////CLIENTES/////////////////////////////////////////
+
+const clients_i = document.getElementById("cliente_i");
+const setClients = async () =>{
+    let list = await obtenerClientes();
+    console.log(list);
+    let Client_list = () =>{
+        list.forEach(element => {
+            clients_i.innerHTML+= `<option value="${element.name}">${element.name}</option>`;
+        });
+    }
+    Client_list();
+}
+
+clients_i.addEventListener("change", ()=>{
+    document.getElementById("client_selected").innerHTML = clients_i.value;
+    current_client = clients_i.value;
+});
