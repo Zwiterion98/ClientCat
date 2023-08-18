@@ -311,12 +311,16 @@ const getIDbyName = (lista, name) =>{
 const pm_i = document.getElementById("pm_i");
 let pm_d = "";
 pm_i.addEventListener("change", () => {
-    pm_d = pm_i.value;
-    setClients(PM_list,pm_d);
+    if(pm_i.value != ""){
+        pm_d = pm_i.value;
+        setClients(PM_list,pm_d, client_list);
+    }
 });
+let client_list = []
 
 const setPM = async () => {
     PM_list = await obtenerUsuarios();
+    client_list = await obtenerClientes();
     console.log(PM_list.length);
     for(let i = 0; i < PM_list.length; i++){
         pm_i.innerHTML+= `<option value="${i}">${PM_list[i].name}</option>`;
@@ -324,18 +328,57 @@ const setPM = async () => {
 
 }
 
+const getItemByName = (array, name) => {
+    return array.find(item => item.name === name);
+};
+
 const cliente_i = document.getElementById("cliente_i");
-const setClients = (list, index) =>{
+const setClients = (list, index, clientes) =>{
     cliente_i.innerHTML = `<option value="">Seleccionar</option>`
+
     console.log(list[index])
     let Client_list = () =>{
         let keys = Object.keys(list[index].clients);
         keys.forEach(element => {
-            cliente_i.innerHTML+= `<option value="${element.toString()}">${element}</option>`;
-        });
+            console.log(element)
+            let client = getItemByName(clientes, element)
+            console.log(client)
+            
+
+                const lastItem = client.cuestionary[client.cuestionary.length - 1];
+                const option = document.createElement("option");
+                if(client.cuestionary.length > 0){
+                    if (lastItem.timestamp) {
+                        const now = new Date();
+                        const twoMonthsAgo = new Date();
+                        twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+            
+                        
+                        
+                        option.value = element;
+                        option.text = element;
+        
+                        if (new Date(lastItem.timestamp) +2 >= twoMonthsAgo) {
+                                option.disabled = false;
+                        } else {
+                                option.disabled = true;
+                        }
+                        } else {
+                            option.disabled = true;
+                        }
+                        cliente_i.add(option);
+                } else {
+                    option.value = element;
+                    option.text = element;
+                    cliente_i.add(option);
+                }
+                
+            });
     }
     Client_list();
 }
+
+
 
 let cliente_d = "";
 let current_client;
@@ -363,3 +406,4 @@ function obtenerCategoria(response){
     console.log(categoria);
     return categoria;
 }
+

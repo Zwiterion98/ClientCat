@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar</title>
+    <!-- Incluir las bibliotecas de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="seleccion_option">
+        <h2>Que desea modificar?</h2>
+        <select name="modificar_i" id="modificar_i" class="input_option">
+            <option value="">Seleccionar</option>
+            <option value="cliente">Cliente</option>
+            <option value="pm">Project Manager</option>
+        </select>
+    </section>
+    <section id="seleccion_persona" class="hide">
+        <h3>Seleccionar PM</h3>
+        <select name="pm_i" id="pm_i" class="input_option">
+            
+        </select>
+        <h3 id="selected_pm"></h3>
+        <input disabled="true" type="button" value="Agregar cliente" id="addClient" class="sendButton">
+        <input disabled="true" type="button" value="Quitar cliente" id="removeClient" class="sendButton">
+        <div id="pm_select_client_add" class="hide">
+            <h3>Seleccionar cliente para agregar</h3>
+            <select name="cliente_i_add" id="cliente_i_add" class="input_option">
+                <option value="">Seleccionar</option>
+            </select>
+            <input type="button" value="AÑADIR" id="button_add_client" class="sendButton">
+        </div>
+        <div id="pm_select_client_remove" class="hide">
+            <h3>Seleccionar cliente para remover</h3>
+            <select name="cliente_i_remove" id="cliente_i_remove" class="input_option" >
+                <option value="">Seleccionar</option>
+            </select>
+            <input type="button" value="REMOVER" id="button_remove_client" class="sendButton">
+        </div>
+        
+      
+    </section>
+    <section id="seleccion_cliente" class="hide" >
+        <h3>Seleccionar Cliente</h3>
+        <select name="cliente_i" id="cliente_i" class="input_option">
+            <option value="">Seleccionar</option>
+        </select>
+        <br>
+    </section>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="modify.js"></script>
+</body>
+</html>
