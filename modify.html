@@ -48,6 +48,18 @@
             <option value="">Seleccionar</option>
         </select>
         <h3 id="client_selected"></h3>
+        <div id="modify_client_div" class="hide">
+            <h4>Baja de cliente</h4>
+            <p>Fecha de baja:</p>
+            <input type="date" name="date_input" id="date_input" >
+            <br>
+            <p>Motivo/Observaciones:</p>
+            <br>
+            <textarea name="text_area" id="text_area" cols="30" rows="10" placeholder="Escriba razones por baja de cliente"></textarea>
+            <br>
+            <input type="button" value="ENVIAR" id="boton_baja_cliente" class="sendButton">
+        </div>
+        
     </section>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>

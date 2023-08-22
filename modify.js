@@ -155,17 +155,60 @@ modificar_i.addEventListener("change", () =>{
 
 const clients_i = document.getElementById("cliente_i");
 const setClients = async () =>{
-    let list = await obtenerClientes();
-    console.log(list);
+    
+    client_list = await obtenerClientes();
+    console.log(client_list);
     let Client_list = () =>{
-        list.forEach(element => {
+        client_list.forEach(element => {
             clients_i.innerHTML+= `<option value="${element.name}">${element.name}</option>`;
         });
     }
     Client_list();
 }
 
+const findClientByName = (_name) =>{
+    console.log(client_list)
+    for(let i = 0; i < client_list.length; i++){
+        if(client_list[i].name == _name){
+            return client_list[i];
+        }
+    }
+    return 0;
+}
+
+const datePicker = document.querySelector("#date_input");
+const textArea = document.querySelector("#text_area");
 clients_i.addEventListener("change", ()=>{
-    document.getElementById("client_selected").innerHTML = clients_i.value;
-    current_client = clients_i.value;
+    current_client = findClientByName(clients_i.value);
+    document.getElementById("client_selected").innerHTML = current_client.name;
+    document.querySelector("#modify_client_div").classList.remove("hide")
 });
+
+document.querySelector("#boton_baja_cliente").addEventListener("click", async () =>{
+    let fecha = datePicker.value;   
+    console.log(fecha);
+    let razon = textArea.value;
+    console.log(razon);
+    let valido = true;
+    if(fecha == ""){
+        valido = false;
+        console.log("fecha vacia")
+    }
+    if(razon == ""){
+        valido = false;
+        console.log("razon vacia")
+    }
+    let jsonResponse = {
+        "fecha":fecha,
+        "razon":razon
+    }
+
+    if(valido){
+        await modificarClient(current_client.id, "active", false);
+        await modificarClient(current_client.id, "baja", jsonResponse);
+        datePicker.value = "";
+        textArea.value = "";
+        clients_i.value = "";
+    }
+    
+}); 

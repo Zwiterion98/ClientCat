@@ -84,6 +84,7 @@ const obtenerClientes = async () => {
     try{
         const {data,error} = await _supabase.from('CLIENTS') 
         .select('*')
+        .eq('active', true)
 
         console.log(data);
         return data;
@@ -148,6 +149,39 @@ const modificarUser = async(id, key, value) => {
             const { data, error } = await _supabase
             .from('USERS')
             .update({ rol: value })
+            .eq('id', id)
+        }
+        
+    }
+    catch(e){
+        console.log(e);
+    }   
+}
+
+const modificarClient = async (id, key, value) => {
+    try{
+        if(key == "name"){
+            const { data, error } = await _supabase
+            .from('CLIENTS')
+            .update({ name: value })
+            .eq('id', id)
+        }
+        else if(key == "type"){
+            const { data, error } = await _supabase
+            .from('CLIENTS')
+            .update({ type: value })
+            .eq('id', id)
+        }
+        else if(key == "baja"){
+            const { data, error } = await _supabase
+            .from('CLIENTS')
+            .update({ baja: value })
+            .eq('id', id)
+        }
+        else if(key == "active"){
+            const { data, error } = await _supabase
+            .from('CLIENTS')
+            .update({ active: value })
             .eq('id', id)
         }
         

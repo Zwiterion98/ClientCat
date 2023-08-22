@@ -80,6 +80,35 @@ label{
     color: #2B85D3;
 }
 
+p{
+    display: inline-block;
+    margin-top: 0.5em;
+    font-size: 1em;
+    color: #2B85D3;
+}
+
+input[type=date]{
+    border: 2px #2B85D3 solid;
+    padding: 0.6em 2em;
+    border-radius: 5px;
+    color: #2B85D3;
+    font-weight: 600;
+    background-color:  #ffffff;
+}
+
+textarea{
+    border: 2px #2B85D3 solid;
+    padding: 0.6em 2em;
+    border-radius: 5px;
+    color: #2B85D3;
+    font-weight: 600;
+    background-color:  #ffffff; 
+    
+}
+
+textarea::placeholder{
+    color: #2B85D3;
+}
 .sendButton{
     border: 2px #2B85D3 solid;
     padding: 0.6em 3em;
