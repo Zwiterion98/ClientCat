@@ -280,6 +280,10 @@ submit_cuestion.addEventListener("click", () => {
         let cat = obtenerCategoria(respuesta);
         ingresarClientCat(current_client[0].name, cat);
         ingresarCuestionario(current_client[0].name, respuesta);
+        document.querySelector("#progress_cuestionary").classList.remove("hide");
+        document.querySelector("#section_persona").classList.remove("hide");
+        document.querySelector("#section_cuestionary_ideal").classList.add("hide");
+         
     }
     console.log(respuesta.reuniones);
 
@@ -406,4 +410,45 @@ function obtenerCategoria(response){
     console.log(categoria);
     return categoria;
 }
+let cuestionary_part = 0;
+const button_siguiente = document.querySelector("#siguiente_cuestionario");
+button_siguiente.addEventListener("click", async ()=>{
+    if(cuestionary_part == 0){
+        if(pm_d != "" && cliente_d != ""){
+            cuestionary_part =1;
+            document.querySelector("#section_persona").classList.add("hide")
+            document.querySelector("#section_cuestionario_tiempo").classList.remove("hide");
+        }
+        
+    }
+    else if(cuestionary_part == 1){
+        if(reuniones_d != "" && mail_d != "" && tareas_d != "" && propuestas_d != ""){
+            cuestionary_part =2;
+            document.querySelector("#section_cuestionario_tiempo").classList.add("hide")
+            document.querySelector("#section_cuestionario_inversion").classList.remove("hide");
+        }
+    }
+    else if(cuestionary_part == 2){
+        if(inversion_d != ""){
+            cuestionary_part =3;
+            document.querySelector("#section_cuestionario_inversion").classList.add("hide")
+            document.querySelector("#section_cuestionario_aspiracional").classList.remove("hide");
+       }
+    }
+    else if(cuestionary_part == 3){
+        if(contrato_d != "" && presupuesto_d != "" && presencia_d != "" && pago_d !=""){
+            cuestionary_part =4;
+            document.querySelector("#section_cuestionario_aspiracional").classList.add("hide")
+            document.querySelector("#progress_cuestionary").classList.add("hide")
+            document.querySelector("#section_cuestionario_ideal").classList.remove("hide");
+       }
+    }
+    console.log(cuestionary_part)
+})
 
+
+//0 select user and client
+//1 time
+//2 inversion
+//3 aspircional
+//4 ideal

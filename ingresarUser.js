@@ -75,7 +75,6 @@ const getUsers = async  () =>{
         ` 
     }
     console.log(users)
-    document.getElementById("resultado").innerHTML = html;
    
 }
 
@@ -95,3 +94,4 @@ const setClients = async () =>{
 }
 
 setClients();
+getUsers();

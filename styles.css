@@ -2,6 +2,7 @@
     margin:0px;
     padding: 0px;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 /* 
@@ -51,7 +52,7 @@ body{
 }
 
 #cliente_section{
-    height: 100vh;
+    height: 100%;
    
 }
 
@@ -175,7 +176,7 @@ transform: scale(0);
 }
 
 #section_user{
-    height: 100vh;
+    height: 100%;
 }
 
 .input_text{
@@ -215,4 +216,78 @@ transform: scale(0);
 canvas {
     width: 100%;
     max-width: 300px; /* Ancho máximo para cada gráfica */
+}
+
+.globalContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.leftPanel{
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    height: 100vh;
+    background-color: #222324;
+    justify-content: top;
+    align-items: center;
+    text-align: center;
+}
+
+.leftPanel a{
+    width: 80%;
+    background-color:#81D28F;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin: 0.5em 0em;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.leftPanel span{
+    padding: 0em 1em;
+}
+
+#img_user{
+    border-radius:80px;
+    background-color: aquamarine;
+    height: 10em;
+    width: 10em;
+}
+
+#userContent{
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.rightPanel{
+   
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding-left: 4em;
+    padding-top: 3em;
+    background-color: #e2e2e2;
+    justify-content: left;
+    align-items: left;
+    
+}
+
+.topPanel{
+    width: 80%;
+    padding-left: 1em;
+    background-color: rgb(153, 153, 156);
+}
+
+.botPanel{
+    padding: 2em 2em;
+    width: 80%;
+    background-color: rgb(167, 167, 169);
+    height: 100%;
 }
