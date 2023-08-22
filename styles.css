@@ -78,6 +78,7 @@ label{
     display: inline-block;
     margin-top: 0.5em;
     font-size: 1em;
+    font-weight: 700;
     color: #2B85D3;
 }
 
@@ -269,7 +270,7 @@ canvas {
    
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 60%;
     height: 100vh;
     padding-left: 4em;
     padding-top: 3em;
@@ -280,14 +281,45 @@ canvas {
 }
 
 .topPanel{
-    width: 80%;
+    width: 100%;
     padding-left: 1em;
     background-color: rgb(153, 153, 156);
 }
 
 .botPanel{
     padding: 2em 2em;
-    width: 80%;
+    width: 100%;
     background-color: rgb(167, 167, 169);
     height: 100%;
+}
+
+
+#listaNombresSinAnalizar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+}
+
+#listaNombresAnalizados{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+li{
+    color: #2B85D3;
+    list-style: none;
+}
+
+.div_clientes_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    width: 20%;
+    height: 100vh;
+    padding-left: 1em;
+    padding-top: 3em;
+    background-color: #e2e2e2;
+    align-items: center;
 }
