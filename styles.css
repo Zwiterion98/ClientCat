@@ -58,7 +58,7 @@ body{
 
 h2{
     font-size: 2.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
     color: #2B85D3;
 }
 
@@ -120,6 +120,11 @@ textarea::placeholder{
     background-color:  #2B85D3;
 }
 
+.buttonSelected{
+    color: #2B85D3;
+    background-color:white;
+}
+
 .sendButton:hover{
     color: #2B85D3;
     background-color:white;
@@ -131,7 +136,7 @@ textarea::placeholder{
 }
 
 .hide{
-    display: none;
+    display: none !important;
 }
 
 .panel{
@@ -206,6 +211,17 @@ transform: scale(0);
     color: #2B85D3;
 }
 
+#tipo_cliente_div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#div_pie{
+    width: 30vw;
+    height: 30vh;
+}
+
 /* Estilos para el contenedor de gráficas */
 #graficosContainer {
     display: grid;
@@ -223,11 +239,12 @@ canvas {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vh;
+    height: max-content;
     
 }
 
 .leftPanel{
+    position: fixed;
     display: flex;
     flex-direction: column;
     width: 18%;
@@ -267,12 +284,11 @@ canvas {
 }
 
 .rightPanel{
-   
     display: flex;
     flex-direction: column;
-    width: 60%;
-    height: 100vh;
-    padding-left: 4em;
+    width: 84%;
+    height: max-content;
+    padding-left: 20%;
     padding-top: 3em;
     background-color: #e2e2e2;
     justify-content: left;
@@ -283,7 +299,7 @@ canvas {
 .topPanel{
     width: 100%;
     padding-left: 1em;
-    background-color: rgb(153, 153, 156);
+    background-color: rgb(155, 155, 158);
 }
 
 .botPanel{
@@ -313,13 +329,28 @@ li{
 }
 
 .div_clientes_right{
+    position: fixed;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: top;
-    width: 20%;
+    width: 16%;
     height: 100vh;
     padding-left: 1em;
     padding-top: 3em;
     background-color: #e2e2e2;
     align-items: center;
+}
+ 
+#tipo_cliente_div{
+    margin-top: 1em;
+    width: 100%;
+    height: fit-content;
+}
+
+#tablas_clientes{
+    margin-top: 1em;
+    width: 100%;
+    height: fit-content;
+    background-color: #ffffff;
 }

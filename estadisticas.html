@@ -18,7 +18,7 @@
                 <h3 id="userName">Nombre</h3>
                 <h4 id="userMail">Mail</h4>
             </div>
-            <a id="href_dashboard" href="dashboard.html">
+            <a id="href_dashboard" href="estadisticas.html">
                 <span class="material-symbols-outlined">
                     home
                 </span>
@@ -52,14 +52,74 @@
         <div class="rightPanel">
             <div class="topPanel">
                 <h1>HOLA, NOMBRE</h1>
-                <h5>FECHA DE HOY</h5>
+                <h5 class="fecha_hoy">FECHA DE HOY</h5>
             </div>
             <div class="botPanel">
-                <div>
+                <div >
                     <h2>Seleccionar usuario</h2>
                     <select name="ususarios" id="i_usuarios" class="input_option">
                         <option value="todos">Todos</option>
                     </select>
+                </div>
+                <div id="menu_estadisticas">
+                    <br>
+                    <input type="button" value="Categoria" id="bt_categoria_cliente" class="sendButton">
+                    <input type="button" value="Ingresos" id="bt_ingresos_cliente" class="sendButton">
+                    <input type="button" value="Cuestionario" id="bt_cuestionario_cliente" class="sendButton">
+                    <input type="button" value="Buscador" id="bt_buscador_cliente" class="sendButton">
+                </div>
+                <div id="cuestionario_cliente" class="hide">
+                    <br>
+                    <h2>Visualizar respuestas</h2>
+                    <select name="select_respuestas" id="select_respuestas" class="input_option">
+                        <option value="">Todas</option>
+                        <option value="reuniones">Reuniones</option>
+                        <option value="propuestas">Propuestas</option>
+                        <option value="mail">Mail</option>
+                        <option value="tareas">Tareas</option>
+                        <option value="contrato">Contrato</option>
+                        <option value="presupuesto">Presupuesto</option>
+                        <option value="presencia">Presencia</option>
+                        <option value="pago">Pago</option>
+                        <option value="predisposicion">Predisposicion</option>
+                        <option value="organizacion">Organizacion</option>
+                        <option value="conocimiento">Conocimiento</option>
+                        <option value="pedido">Pedido</option>
+                        <option value="cambios">Cambios</option>
+                        <option value="urgencia">Urgencia</option>
+                        <option value="contacto">Contacto</option>
+                    </select>
+                    <div id="tablas_clientes">
+                        <div id="graficosContainer">
+                            <!-- Los gráficos de barras se agregarán aquí dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+                <div id="ingresos_cliente" class="hide">
+                    <br>
+                    <h2>Ingresos de clientes</h2>
+                    <div id="inversionStats"></div>
+                </div>
+                <div id="div_categoria">
+                    <br>
+                    <h2 >Lista clientes por categoria</h2>
+                    <div id="tipo_cliente_div">
+                        <div id="div_pie">
+                            <!-- Agregar un elemento canvas para el gráfico de pastel -->
+                            <canvas id="graficoPastel"></canvas>
+                        </div>
+                        
+                        <div id="listaClientesCat">
+                            <div><label for="clientA" class="label">Categoria A</label>
+                                <ul id="clientA"></ul>
+                                </div>
+                            <div> <label for="clientB" class="label">Categoria B</label>
+                                <ul id="clientB"></ul></div>
+                            <div> <label for="clientC" class="label">Categoria C</label>
+                                <ul id="clientC"></ul></div>
+                        </div>
+                    </div>
+                   
                 </div>
                 
             </div>
@@ -71,35 +131,12 @@
                 <!-- Los nombres se agregarán aquí dinámicamente -->
             </ul>
             <label for="listaNombresSinAnalizar" class="label" id="sinCuestionario">Incompletos</label>
-            <ul id="listaNombresSinAnalizar" class="label"> 
-                
-            </ul>
+            <ul id="listaNombresSinAnalizar" class="label"></ul>
         </div>
     </div>
     
     
-    <div id="inversionStats"></div>
-   <div id="listaClientesCat">
-        <h2>Lista clientes por categoria</h2>
-        <label for="clientA" class="label">Categoria A</label>
-        <ul id="clientA"></ul>
-        
-        <label for="clientB" class="label">Categoria B</label>
-        <ul id="clientB"></ul>
-        
-        <label for="clientC" class="label">Categoria C</label>
-        <ul id="clientC"></ul>
-    </div>
-    <div id="graficosContainer">
-        <!-- Los gráficos de barras se agregarán aquí dinámicamente -->
-    </div>
-    <div>
-        <!-- Agregar un elemento canvas para el gráfico de pastel -->
-        <canvas id="graficoPastel"></canvas>
-    </div>
-    <div id="tablesContainer">
-        <!-- Las tablas se agregarán aquí dinámicamente -->
-    </div>
+    
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
     <script src="estadisticas.js"></script>

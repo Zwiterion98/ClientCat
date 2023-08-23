@@ -1,6 +1,8 @@
 const supabaseUrl = 'https://gqihrwmpsytjojehuogg.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdxaWhyd21wc3l0am9qZWh1b2dnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkxOTA3MTUsImV4cCI6MjAwNDc2NjcxNX0.m3mLJs56G_-QHPmsf78icNhTDo-c9TDPlXawVWKQIkg'
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey)
+let hoy = new Date();
+document.querySelector(".fecha_hoy").innerHTML = `Today is ${hoy.toDateString()}`
 
 //Crear usuario
 

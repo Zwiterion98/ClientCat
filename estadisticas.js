@@ -102,6 +102,13 @@ function calcularEstadisticasInversionPorTipo(estadisticas, listaObjetos) {
     return resultados;
 }
 
+let select_respuestas_d ="";
+document.querySelector("#select_respuestas").addEventListener("change", async ()=>{
+select_respuestas_d = document.querySelector("#select_respuestas").value;
+console.log(select_respuestas_d)
+estadistica()
+});
+
 const estadistica = async () => {
     let listaObjetos = await obtenerClientes();
     let listaObjetosFinal = [];
@@ -178,42 +185,45 @@ const estadistica = async () => {
     const clientA = document.getElementById("clientA");
     const clientB = document.getElementById("clientB");
     const clientC = document.getElementById("clientC");
-
     clientC.innerHTML = '';
     clientB.innerHTML = '';
     clientA.innerHTML = '';
     if(listaNombresAnalizados.childNodes.length > 0){
          // Crear un gráfico de barras para cada valor de respuesta
          for (const respuesta in estadisticas) {
-            if (respuesta !== 'analizados' && respuesta !== 'nombresAnalizados' && respuesta !== 'tipos') {
-                const canvas = document.createElement('canvas');
-                canvas.id = `grafico${respuesta}`;
-                graficosContainer.appendChild(canvas);
-                
-                const ctxBar = canvas.getContext('2d');
-
-                const chart = new Chart(ctxBar, {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(estadisticas[respuesta]),
-                        datasets: [{
-                            label: `Respuestas de ${respuesta}`,
-                            data: Object.values(estadisticas[respuesta]),
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true
+            if((select_respuestas_d == "" || select_respuestas_d == respuesta)&& respuesta != "inversion" && respuesta != "inversionMax" && respuesta != "inversionMin" ){
+                console.log(respuesta)
+                if (respuesta !== 'analizados' && respuesta !== 'nombresAnalizados' && respuesta !== 'tipos') {
+                    const canvas = document.createElement('canvas');
+                    canvas.id = `grafico${respuesta}`;
+                    graficosContainer.appendChild(canvas);
+                    
+                    const ctxBar = canvas.getContext('2d');
+    
+                    const chart = new Chart(ctxBar, {
+                        type: 'bar',
+                        data: {
+                            labels: Object.keys(estadisticas[respuesta]),
+                            datasets: [{
+                                label: `Respuestas de ${respuesta}`,
+                                data: Object.values(estadisticas[respuesta]),
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                }
             }
+            
         }
         // Mostrar tabla tipo de clientes
 
@@ -260,9 +270,9 @@ const estadistica = async () => {
         // Mostrar estadísticas de inversión
         const inversionStats = document.getElementById('inversionStats');
         inversionStats.innerHTML = `
-        <p>Máximo: ${estadisticas.inversionMax}</p>
-        <p>Mínimo: ${estadisticas.inversionMin}</p>
-        <p>Media: ${estadisticas.inversion.total/estadisticas.analizados}</p>
+        <p>Máximo: USD ${estadisticas.inversionMax}</p><br>
+        <p>Mínimo: USD ${estadisticas.inversionMin}</p><br>
+        <p>Media: USD ${Math.round(estadisticas.inversion.total/estadisticas.analizados)}</p>
         `;
 
 
@@ -317,3 +327,32 @@ i_usuarios.addEventListener("click", ()=>{
 
 });
 
+function closeClientDivs(){
+    categoria_cliente.classList.remove("buttonSelected");
+    ingresos_cliente.classList.remove("buttonSelected");
+    cuestionario_cliente.classList.remove("buttonSelected");
+    document.querySelector("#cuestionario_cliente").classList.add("hide");
+    document.querySelector("#ingresos_cliente").classList.add("hide");
+   // document.querySelector("#buscador_cliente").classList.add("hide");
+    document.querySelector("#div_categoria").classList.add("hide");
+}
+
+const categoria_cliente = document.querySelector("#bt_categoria_cliente");
+categoria_cliente.addEventListener("click", ()=>{
+closeClientDivs();
+document.querySelector("#div_categoria").classList.remove("hide");
+categoria_cliente.classList.add("buttonSelected");
+});
+const ingresos_cliente = document.querySelector("#bt_ingresos_cliente");
+ingresos_cliente.addEventListener("click", ()=>{
+    closeClientDivs();
+    document.querySelector("#ingresos_cliente").classList.remove("hide");
+    ingresos_cliente.classList.add("buttonSelected");
+    });
+const cuestionario_cliente = document.querySelector("#bt_cuestionario_cliente");
+cuestionario_cliente.addEventListener("click", ()=>{
+    closeClientDivs();
+    document.querySelector("#cuestionario_cliente").classList.remove("hide");
+    cuestionario_cliente.classList.add("buttonSelected");
+    });
+const buscador_cliente = document.querySelector("#bt_buscador_cliente");
