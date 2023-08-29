@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,200" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="globalContainer">
+        <div class="leftPanel">
+            <img id="logo" src="" alt="">
+            <div id="userContent">
+                <div id="img_user"></div>
+                <h3 id="userName">Nombre</h3>
+                <h4 id="userMail">Mail</h4>
+            </div>
+            <a id="href_dashboard" href="index.html" >
+                <span class="material-symbols-outlined">
+                    home
+                </span>
+                Dashboard
+            </a>
+            <a id="href_dashboard" href="cuestionario.html">
+                <span class="material-symbols-outlined">
+                    app_registration
+                </span>
+                Cuestionario
+            </a>
+            <a id="href_dashboard" href="ingresarUser.html">
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+                Ingresar Usuario
+            </a>
+            <a id="href_dashboard" href="ingresarCliente.html">
+                <span class="material-symbols-outlined">
+                    person
+                </span>
+                Ingresar Cliente
+            </a>
+            <a id="href_dashboard" href="modify.html">
+                <span class="material-symbols-outlined">
+                    settings
+                </span>
+                Configuracion
+            </a>
+        </div>
+        <div class="rightPanel">
+            <div class="topPanel">
+                <h1>HOLA, NOMBRE</h1>
+                <h5 class="fecha_hoy">FECHA DE HOY</h5>
+            </div>
+        <div class="botPanel">
+    
+            <section id="section_user" class="flex_vertical">
+                <h2>Ingresar usuario</h2>
+                <label for="name">Ingresar nombre del usuario</label>
+                <br>
+                <input type="text" id="name" class="input_text">
+                <p class="errorMsj hide">Ingresar un nombre válido*</p>
+                <br>
+                <label for="email">Ingresar email del usuario</label>
+                <p class="errorMsj hide">Ingresar un email válido*</p>
+                <br>
+                <input type="email" name="email" id="email" class="input_text">
+                <br>
+                <label for="rol">Seleccionar rol del usuario</label>
+                <p class="errorMsj hide">Selecciona el rol del usuario*</p>
+                <br>
+                <select name="rol" id="rol" class="input_option">
+                    <option value="no-rol">Seleccionar rol</option>
+                    <option value="admin">Admin</option>
+                    <option value="pm">PM</option>
+                    <option value="director">Director</option>
+                    <option value="finanzas">Finanzas</option>
+                </select>
+                <br>
+                <label for="rol">Seleccionar los clientes del PM</label>
+                <br>
+                <select name="clients" id="clients_i" class="input_option" multiple="multiple">
+                    <option value="no-client">Seleccionar clientes</option>
+                </select>
+                <br>
+                <input type="button" value="REGISTRAR" id="sendUser"  class="sendButton">
+            </section>
+            <div class="panel" id="aviso" data-on="off" onclick="this.setAttribute('data-on','off')">
+                <div>
+                <p id="aviso_msj"></p>
+                </div>
+            </div>
+            <input type="button" value="Obtener usuarios" id="getUsers" class="hide">    
+            
+        </div>
+        </div>
+    </div>
+    <div class="div_clientes_right">
+        
+    </div>
+        
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="ingresarUser.js"></script>
+</body>
+</html>
