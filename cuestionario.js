@@ -282,7 +282,8 @@ submit_cuestion.addEventListener("click", () => {
         ingresarCuestionario(current_client[0].name, respuesta);
         document.querySelector("#progress_cuestionary").classList.remove("hide");
         document.querySelector("#section_persona").classList.remove("hide");
-        document.querySelector("#section_cuestionary_ideal").classList.add("hide");
+        document.querySelector("#section_cuestionario_ideal").classList.add("hide");
+        cuestionary_part = 0;
          
     }
     console.log(respuesta.reuniones);
@@ -406,6 +407,18 @@ function obtenerCategoria(response){
     }
     else{
         categoria = "C";
+    }
+    if(categoria == "A" && (((response.pago == "2a4") && (response.urgencia == "no" && response.predisposicion == "no" && response.cambios == "+5"))  ||  (response.pago == "+5" && ((response.urgencia == "no" && (response.predisposicion == "no" || response.cambios == "+5")) || (response.predisposicion == "no" && response.cambios == "+5"))))){
+        categoria = "B";
+    }
+    else if(categoria == "B" && ((response.inversion + 117 >= 2000) && (response.pago != "+5") && (response.presupuesto == "si" || response.presencia == "si") && ((response.urgencia == "si" && (response.predisposicion == "si" || response.pedido == "si")) || (response.predisposicion == "si" && response.pedido == "si")))){
+        categoria = "A";
+    }
+    else if(categoria == "B" && (((response.pago == "2a4") && (response.urgencia == "no" && response.predisposicion == "no" && response.cambios == "+5"))  || ((response.pago == "+5") && ((response.urgencia == "no" && (response.predisposicion == "no" || response.cambios == "+5")) || (response.predisposicion == "no" && response.cambios == "+5"))))){
+        categoria = "C";
+    }
+    else if(categoria == "C"  && ((response.inversion + 223 >= 1115) && (response.pago != "+5") && (response.presupuesto == "si" || response.presencia == "si") && ((response.urgencia == "si" && (response.predisposicion == "si" || response.pedido == "si")) || (response.predisposicion == "si" && response.pedido == "si")))){
+        categoria = "B";
     }
     console.log(categoria);
     return categoria;
