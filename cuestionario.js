@@ -178,7 +178,7 @@ const submit_cuestion = document.getElementById("submit_cuestion");
 
 
 
-submit_cuestion.addEventListener("click", () => {
+submit_cuestion.addEventListener("click", async () => {
     let completed = true;
     let respuesta = {
         "reuniones":reuniones_d,
@@ -278,16 +278,17 @@ submit_cuestion.addEventListener("click", () => {
         contacto_si.checked = false;
         contacto_no.checked = false;
         let cat = obtenerCategoria(respuesta);
-        ingresarClientCat(current_client[0].name, cat);
-        ingresarCuestionario(current_client[0].name, respuesta);
+        await ingresarClientCat(current_client[0].name, cat);
+        await ingresarCuestionario(current_client[0].name, respuesta);
         document.querySelector("#progress_cuestionary").classList.remove("hide");
         document.querySelector("#section_persona").classList.remove("hide");
         document.querySelector("#section_cuestionario_ideal").classList.add("hide");
         cuestionary_part = 0;
-         
+        document.querySelector("#cliente_i").value = "";
+        
     }
     console.log(respuesta.reuniones);
-
+    setPM();
 });
 
 let PM_list;
@@ -324,6 +325,7 @@ pm_i.addEventListener("change", () => {
 let client_list = []
 
 const setPM = async () => {
+    pm_i.innerHTML = ` <option value="">Seleccionar</option>`;
     PM_list = await obtenerUsuarios();
     client_list = await obtenerClientes();
     console.log(PM_list.length);
@@ -349,34 +351,36 @@ const setClients = (list, index, clientes) =>{
             let client = getItemByName(clientes, element)
             console.log(client)
             
-
-                const lastItem = client.cuestionary[client.cuestionary.length - 1];
-                const option = document.createElement("option");
-                if(client.cuestionary.length > 0){
-                    if (lastItem.timestamp) {
-                        const now = new Date();
-                        const twoMonthsAgo = new Date();
-                        twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+                if(undefined != client){
+                    const lastItem = client.cuestionary[client.cuestionary.length - 1];
+                    const option = document.createElement("option");
+                    if(client.cuestionary.length > 0){
+                        if (lastItem.timestamp) {
+                            const now = new Date();
+                            const twoMonthsAgo = new Date();
+                            twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+                
+                            
+                            
+                            option.value = element;
+                            option.text = element;
             
-                        
-                        
+                            if (new Date(lastItem.timestamp) +2 >= twoMonthsAgo) {
+                                    option.disabled = false;
+                            } else {
+                                    option.disabled = true;
+                            }
+                            } else {
+                                option.disabled = true;
+                            }
+                            cliente_i.add(option);
+                    } else {
                         option.value = element;
                         option.text = element;
-        
-                        if (new Date(lastItem.timestamp) +2 >= twoMonthsAgo) {
-                                option.disabled = false;
-                        } else {
-                                option.disabled = true;
-                        }
-                        } else {
-                            option.disabled = true;
-                        }
                         cliente_i.add(option);
-                } else {
-                    option.value = element;
-                    option.text = element;
-                    cliente_i.add(option);
+                    }
                 }
+                
                 
             });
     }

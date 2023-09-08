@@ -188,10 +188,33 @@ const estadistica = async () => {
     clientC.innerHTML = '';
     clientB.innerHTML = '';
     clientA.innerHTML = '';
+    let isTiempo = false;
+    let isIdeal = false;
+    let isAspiracional = false;
+    let tiempo = ["reuniones", "propuestas", "mail", "tareas"];
+    if(select_respuestas_d == "tiempo"){
+        isTiempo = true;
+        isIdeal = false;
+        isAspiracional = false;
+    }
+   
+    let aspiracional = ["cambios", "predisposicion", "urgencia", "contacto", "pedido", "conocimiento", "organizacion", "pago"];
+    if(select_respuestas_d == "aspiracional"){
+        isTiempo = false;
+        isIdeal = false;
+        isAspiracional = true;
+    }
+   
+    let ideal = ["pago", "presupuesto", "presencia", "contrato"];
+    if(select_respuestas_d == "ideal"){
+        isTiempo = false;
+        isIdeal = true;
+        isAspiracional = false;
+    }
     if(listaNombresAnalizados.childNodes.length > 0){
          // Crear un gráfico de barras para cada valor de respuesta
          for (const respuesta in estadisticas) {
-            if((select_respuestas_d == "" || select_respuestas_d == respuesta)&& respuesta != "inversion" && respuesta != "inversionMax" && respuesta != "inversionMin" ){
+            if((select_respuestas_d == "" || (isTiempo && tiempo.includes(respuesta)) || (isAspiracional && aspiracional.includes(respuesta)) || (isIdeal && ideal.includes(respuesta))) && respuesta != "inversion" && respuesta != "inversionMax" && respuesta != "inversionMin" ){
                 console.log(respuesta)
                 if (respuesta !== 'analizados' && respuesta !== 'nombresAnalizados' && respuesta !== 'tipos') {
                     const canvas = document.createElement('canvas');
@@ -348,11 +371,11 @@ ingresos_cliente.addEventListener("click", ()=>{
     closeClientDivs();
     document.querySelector("#ingresos_cliente").classList.remove("hide");
     ingresos_cliente.classList.add("buttonSelected");
-    });
+});
 const cuestionario_cliente = document.querySelector("#bt_cuestionario_cliente");
 cuestionario_cliente.addEventListener("click", ()=>{
     closeClientDivs();
     document.querySelector("#cuestionario_cliente").classList.remove("hide");
     cuestionario_cliente.classList.add("buttonSelected");
-    });
+});
 const buscador_cliente = document.querySelector("#bt_buscador_cliente");

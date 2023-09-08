@@ -243,6 +243,7 @@ transform: scale(0);
 canvas {
     width: 100%;
     max-width: 300px; /* Ancho máximo para cada gráfica */
+    max-height: 300px;
 }
 
 .globalContainer{
